@@ -3,22 +3,19 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Contact;
 
 class HelloWorld extends Component
-{
+{   
 
-    public $name = "D Jelly";
-    public $names = ["Jelly", "Man", "Chico"];
-    public $loud =  false;
-    public $greeting = ["Hello"];
+    public $contacts;
+
+    public function mount() {
+        $this->contacts = Contact::all();
+    }
 
     public function render()
     {
         return view('livewire.hello-world');
-    }
-
-    public function resetName($name = 'Chiko')
-    {
-        $this->name = $name;
     }
 }
